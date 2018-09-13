@@ -1,6 +1,5 @@
-import Spacer from '../components/Spacer';
-import Navigation from '../components/Navigation';
+import StartButton from '../components/StartButton'
 
 # React 202
 
-<Navigation {...props} />
+<StartButton />

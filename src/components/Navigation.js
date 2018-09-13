@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
 import { css } from 'react-emotion';
 import { textColor, cssBorder, themeColor } from '../styles';
+import { orders } from '../utils';
 
 const cssButton = css`
   cursor: pointer;
@@ -17,20 +18,34 @@ const cssButton = css`
   }
 `;
 
-const orders = ['/component-types', '/pure-component', '/end'];
-
 class Navigation extends React.Component {
   static propTypes = {
     location: PropTypes.object.isRequired,
   };
 
-  handleClick = () => {
-    const { location } = this.props;
-    const currentOrder = orders.indexOf(location.pathname);
-    navigate(`${orders[currentOrder + 1]}`);
+  getCurrentOrder = () =>
+    orders.findIndex(pathname =>
+      new RegExp(pathname).test(this.props.location.pathname)
+    );
+
+  handleNext = () => {
+    const currentOrder = this.getCurrentOrder();
+
+    if (currentOrder !== orders.length - 1) {
+      navigate(`${orders[currentOrder + 1]}`);
+    }
+  };
+
+  handlePrev = () => {
+    const currentOrder = this.getCurrentOrder();
+
+    if (currentOrder !== 0) {
+      navigate(`${orders[currentOrder - 1]}`);
+    }
   };
 
   render() {
+    const currentOrder = this.getCurrentOrder();
     return (
       <div
         className={css`
@@ -45,12 +60,20 @@ class Navigation extends React.Component {
           align-items: center;
         `}
       >
-        <button type="button" className={cssButton}>
-          prev
-        </button>
-        <button onClick={this.handleClick} type="button" className={cssButton}>
-          Next
-        </button>
+        {currentOrder === 0 ? (
+          <span />
+        ) : (
+          <button onClick={this.handlePrev} type="button" className={cssButton}>
+            prev
+          </button>
+        )}
+        {currentOrder === orders.length - 1 ? (
+          <span />
+        ) : (
+          <button onClick={this.handleNext} type="button" className={cssButton}>
+            Next
+          </button>
+        )}
       </div>
     );
   }

@@ -35,12 +35,12 @@ function Header({ title }) {
           margin: 0;
         `}
       >
-        <Link to="/" style={{ textDecoration: 'none' }}>
+        <Link to="/" style={{ textDecoration: 'none', color: themeColor }}>
           {title}
         </Link>
       </h1>
       <a
-        href="https://github.com/xiaofan2406/gatsby-live-mdx"
+        href="https://github.com/xiaofan2406/react-202"
         target="_blank"
         rel="noopener noreferrer"
         className={cssExternalLink}

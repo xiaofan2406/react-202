@@ -5,7 +5,7 @@ const emotionConfig =
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Live MDX',
+    title: 'React 202',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -13,7 +13,10 @@ module.exports = {
       resolve: `gatsby-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
-        defaultLayout: require.resolve('./src/components/Layout'),
+        defaultLayouts: {
+          home: require.resolve('./src/components/HomeLayout'),
+          default: require.resolve('./src/components/Layout'),
+        },
       },
     },
     {
@@ -21,9 +24,16 @@ module.exports = {
       options: emotionConfig,
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: 'home',
+        path: `${__dirname}/src/pages/index.md`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-live-mdx',
+        name: 'react-202',
         short_name: 'starter',
         start_url: '/',
         background_color: '#663399',

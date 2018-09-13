@@ -24,13 +24,7 @@ function Layout({ children }) {
     >
       {({ site: { siteMetadata } }) => (
         <>
-          <Helmet
-            title={siteMetadata.title}
-            meta={[
-              { name: 'description', content: 'Sample' },
-              { name: 'keywords', content: 'sample, something' },
-            ]}
-          >
+          <Helmet title={siteMetadata.title}>
             <html lang="en" />
           </Helmet>
           <div
