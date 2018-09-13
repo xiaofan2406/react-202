@@ -1,5 +1,5 @@
 import StartButton from '../components/StartButton'
 
-# React 202
+React 202
 
 <StartButton />

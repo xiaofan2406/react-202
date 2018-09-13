@@ -35,7 +35,7 @@ function Layout({ children }) {
               flex-direction: column;
             `}
           >
-            <Header title={siteMetadata.title} />
+            <Header />
             <div
               className={css`
                 ${cssPageWidth};

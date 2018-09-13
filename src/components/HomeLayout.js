@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
+import { css } from 'react-emotion';
 
 function HomeLayout({ children }) {
   return (
     <div
       className={css`
+        padding-bottom: 200px;
         width: 100%;
         height: 100%;
         position: fixed;

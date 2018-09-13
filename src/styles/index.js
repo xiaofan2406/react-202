@@ -28,6 +28,20 @@ export const cssCode = css`
   line-height: 1.4;
 `;
 
+export const cssButton = css`
+  cursor: pointer;
+  outline: none;
+  padding: 12px 24px;
+  color: ${textColor};
+  background-color: transparent;
+  ${cssBorder};
+
+  &:hover {
+    color: ${themeColor};
+    border-color: ${themeColor};
+  }
+`;
+
 // eslint-disable-next-line
 injectGlobal`
   html {
@@ -46,10 +60,20 @@ injectGlobal`
 
   pre,
   code {
+    margin: 0;
     background-color: #f5f7f9;
   }
 
   code {
     padding: 2px 4px;
+  }
+
+  h1 {
+    position: fixed;
+    top: 24px;
+    font-weight: normal;
+    font-size: 26px;
+    z-index: 2
+
   }
 `;

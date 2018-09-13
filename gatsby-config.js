@@ -15,7 +15,7 @@ module.exports = {
         extensions: ['.mdx', '.md'],
         defaultLayouts: {
           home: require.resolve('./src/components/HomeLayout'),
-          default: require.resolve('./src/components/Layout'),
+          pages: require.resolve('./src/components/Layout'),
         },
       },
     },
@@ -28,6 +28,13 @@ module.exports = {
       options: {
         name: 'home',
         path: `${__dirname}/src/pages/index.md`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: 'pages',
+        path: `${__dirname}/src/pages`,
       },
     },
     {

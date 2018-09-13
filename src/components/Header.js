@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from 'react-emotion';
 import { headerHeight, cssPageWidth, textColor, themeColor } from '../styles';
@@ -12,7 +11,7 @@ const cssExternalLink = css`
   }
 `;
 
-function Header({ title }) {
+function Header() {
   return (
     <header
       className={css`
@@ -30,15 +29,17 @@ function Header({ title }) {
         justify-content: space-between;
       `}
     >
-      <h1
+      <span
         className={css`
           margin: 0;
+          font-size: 20px;
+          font-family: cursive;
         `}
       >
         <Link to="/" style={{ textDecoration: 'none', color: themeColor }}>
-          {title}
+          f(props, state) -&#62; view
         </Link>
-      </h1>
+      </span>
       <a
         href="https://github.com/xiaofan2406/react-202"
         target="_blank"
@@ -50,9 +51,5 @@ function Header({ title }) {
     </header>
   );
 }
-
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
-};
 
 export default Header;
