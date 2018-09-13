@@ -4,11 +4,11 @@ import Navigation from '../components/Navigation';
 
 These two are the same, when `state` is not needed
 
-```jsx,static,inline
+```jsx
 const Child = () => <span>child</span>;
 ```
 
-```jsx,static,inline
+```jsx
 class Child extends React.Component {
   render() {
     return <span>child</span>;

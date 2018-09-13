@@ -53,8 +53,8 @@ function PreComponent({ children }) {
     ? children.props.props.className.split(',')
     : [];
 
-  const showInteractive = !flags.includes('static');
-  const inlineNonEditable = !showInteractive && flags.includes('inline');
+  const showEditable = flags.includes('editable');
+  const inlineNonEditable = !showEditable && flags.includes('inline');
 
   return (
     <LiveProvider
@@ -62,7 +62,7 @@ function PreComponent({ children }) {
       scope={{ Child }}
       mountStylesheet={false}
       className={cx(
-        showInteractive ? cssLive : '',
+        showEditable ? cssLive : '',
         inlineNonEditable ? cssInline : ''
       )}
     >
@@ -73,12 +73,12 @@ function PreComponent({ children }) {
         `}
       >
         <LiveEditor
-          contentEditable={showInteractive}
-          className={showInteractive ? cssEditor : cssNonEditable}
+          contentEditable={showEditable}
+          className={showEditable ? cssEditor : cssNonEditable}
         />
-        {showInteractive ? <LivePreview className={cssPreview} /> : null}
+        {showEditable ? <LivePreview className={cssPreview} /> : null}
       </div>
-      {showInteractive ? <LiveError className={cssError} /> : null}
+      {showEditable ? <LiveError className={cssError} /> : null}
     </LiveProvider>
   );
 }
