@@ -40,7 +40,7 @@ class DemoDialog extends React.Component {
                 width: 100%;
                 height: 100%;
                 background-color: rgba(255, 255, 255, 0.9);
-                padding: 144px;
+                padding: 96px;
               `}
             >
               {children}
@@ -49,8 +49,8 @@ class DemoDialog extends React.Component {
                 className={css`
                   ${cssButton};
                   position: absolute;
-                  top: 64px;
-                  right: 64px;
+                  top: 24px;
+                  right: 24px;
                 `}
                 onClick={this.closeDialog}
               >

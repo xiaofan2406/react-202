@@ -12,7 +12,7 @@ const cssLive = css`
 
 const cssInline = css`
   display: inline-block;
-  margin-right: 48px;
+  margin-right: 12px;
 `;
 
 const cssEditor = css`
@@ -42,7 +42,7 @@ const cssPreviewSection = css`
 const cssError = css`
   ${cssCode};
   color: #ff1717;
-  font-size: 12px;
+  font-size: 14px;
   padding: 12px;
 `;
 

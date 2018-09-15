@@ -1,6 +1,6 @@
 import SmartCode from '../components/SmartCode';
 
-<SmartCode>
+<SmartCode konsole>
 
 ```jsx
 class Demo extends React.Component {
@@ -20,6 +20,10 @@ class Demo extends React.Component {
     }));
   }
 
+  callback() {
+    konsole.log('child rendered');
+  }
+
   render() {
     const { text } = this.state;
     return (
@@ -27,7 +31,7 @@ class Demo extends React.Component {
         <div>
           <button onClick={this.changeText}>Click</button>
         </div>
-        <NormalChild text={text} />
+        <NormalChild text={text} didUpdate={this.callback} />
       </div>
     );
   }

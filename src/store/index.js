@@ -2,18 +2,26 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reducer from './reducer';
 
-export default () => {
-  const store = createStore(
-    reducer,
-    {},
-    compose(
-      applyMiddleware(reduxThunk),
-      typeof window === 'object' &&
-      typeof window.devToolsExtension !== 'undefined'
-        ? window.devToolsExtension()
-        : f => f
-    )
-  );
+const store = createStore(
+  reducer,
+  {},
+  compose(
+    applyMiddleware(reduxThunk),
+    typeof window === 'object' &&
+    typeof window.devToolsExtension !== 'undefined'
+      ? window.devToolsExtension()
+      : f => f
+  )
+);
 
-  return store;
+export const { dispatch } = store;
+
+export const konsole = {
+  log: message =>
+    dispatch({
+      type: 'konsole.log',
+      message,
+    }),
 };
+
+export default store;

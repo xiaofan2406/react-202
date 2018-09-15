@@ -10,7 +10,7 @@ export const cssPageWidth = css`
 export const headerHeight = 72;
 
 export const cssBorder = css`
-  border: 1px solid #efefef;
+  border: 1px solid #e8e8e8;
 `;
 
 export const cssHoverableBox = css`
@@ -24,7 +24,7 @@ export const cssHoverableBox = css`
 
 export const cssCode = css`
   font-family: monospace;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
 `;
 
@@ -48,10 +48,6 @@ injectGlobal`
     overflow-y: scroll;
   }
 
-  h1 {
-    margin-top: 0;
-  }
-
   body {
     color: ${textColor};
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -69,11 +65,11 @@ injectGlobal`
   }
 
   h1 {
+    margin-top: 0;
     position: fixed;
     top: 24px;
     font-weight: normal;
     font-size: 26px;
-    z-index: 2
-
+    z-index: 2;
   }
 `;

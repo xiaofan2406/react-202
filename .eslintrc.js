@@ -29,5 +29,6 @@ module.exports = {
     'react/jsx-wrap-multilines': 0, // prettier takes care of it
     'react/destructuring-assignment': 0, // cannot init state with props
     'react/forbid-prop-types': 0, // allow all PropTypes
+    'react/require-default-props': 0, // undefined props are fine
   },
 };

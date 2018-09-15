@@ -29,8 +29,10 @@ class Konsole extends React.Component {
           ${cssBorder};
         `}
       >
-        {logs.map(log => (
-          <div>{log}</div>
+        {logs.map(({ message, timestamp }) => (
+          <div key={timestamp}>
+            {new Date(timestamp).toTimeString().substring(0, 8)}: {message}
+          </div>
         ))}
         <button
           type="button"

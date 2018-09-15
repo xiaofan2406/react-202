@@ -1,19 +1,16 @@
 /* eslint-disable react/no-multi-comp */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { konsole } from '../../store';
 
-class Normal extends React.Component {
+export class NormalChild extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     text: PropTypes.string.isRequired,
+    didUpdate: PropTypes.func.isRequired,
   };
 
   componentDidUpdate() {
-    this.props.dispatch({
-      type: 'konsole.log',
-      message: '[NormalChild]: render',
-    });
+    this.props.didUpdate();
   }
 
   render() {
@@ -22,17 +19,14 @@ class Normal extends React.Component {
   }
 }
 
-class Pure extends React.PureComponent {
+export class PureChild extends React.PureComponent {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     text: PropTypes.string.isRequired,
+    didUpdate: PropTypes.func.isRequired,
   };
 
   componentDidUpdate() {
-    this.props.dispatch({
-      type: 'konsole.log',
-      message: '[PureChild]: render',
-    });
+    this.props.didUpdate();
   }
 
   render() {
@@ -41,15 +35,4 @@ class Pure extends React.PureComponent {
   }
 }
 
-export const NormalChild = connect(
-  null,
-  null,
-  null,
-  { pure: false }
-)(Normal);
-export const PureChild = connect(
-  null,
-  null,
-  null,
-  { pure: false }
-)(Pure);
+export { konsole };
