@@ -18,7 +18,7 @@ const cssInline = css`
 const cssEditor = css`
   ${cssCode};
   outline: 0;
-  flex: 1;
+  flex: 2;
   margin: 0;
   overflow: auto;
   padding: 12px;

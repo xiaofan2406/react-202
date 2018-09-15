@@ -1,5 +1,1 @@
-import Navigation from '../components/Navigation';
-
-# That's it!
-
-<Navigation {...props} />
+## That's it, thanks!

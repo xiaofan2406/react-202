@@ -1,1 +1,6 @@
-export const orders = ['/component-types', '/pure-component', '/end'];
+export const orders = [
+  '/component-types',
+  '/set-state',
+  '/pure-component',
+  '/end',
+];

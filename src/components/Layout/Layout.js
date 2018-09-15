@@ -51,7 +51,8 @@ function Layout({ children }) {
                 `}
               >
                 <MDXProvider components={{ pre: PreComponent }}>
-                  {children}
+                  {/* Assuming every page is mdx page. remove the extra div */}
+                  <>{children.props.children}</>
                 </MDXProvider>
               </main>
             </div>

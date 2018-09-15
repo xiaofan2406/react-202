@@ -7,6 +7,11 @@ import { cssButton } from '../styles';
 class DemoDialog extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    title: PropTypes.string,
+  };
+
+  static defaultProps = {
+    title: 'See Demo',
   };
 
   state = {
@@ -22,12 +27,12 @@ class DemoDialog extends React.Component {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, title } = this.props;
     const { show } = this.state;
     return (
       <>
         <button type="button" onClick={this.showDialog} className={cssButton}>
-          See Demo
+          {title}
         </button>
         {show ? (
           <Portal>
@@ -40,6 +45,7 @@ class DemoDialog extends React.Component {
                 width: 100%;
                 height: 100%;
                 background-color: rgba(255, 255, 255, 0.9);
+                overflow: scroll;
                 padding: 96px;
               `}
             >
