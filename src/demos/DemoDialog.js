@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'react-emotion';
-import Portal from '../components/Portal';
+import Portal from './Portal';
 import { cssButton } from '../styles';
 
 class DemoDialog extends React.Component {

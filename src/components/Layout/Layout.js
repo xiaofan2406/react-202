@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { css } from 'react-emotion';
 import { MDXProvider } from '@mdx-js/tag';
 
-import { cssPageWidth, headerHeight } from '../styles';
+import { cssPageWidth, headerHeight } from '../../styles';
 import Header from './Header';
 import PreComponent from './PreComponent';
 
@@ -45,8 +45,8 @@ function Layout({ children }) {
             >
               <main
                 className={css`
-                  width: 960px;
-                  min-width: 960px;
+                  width: 912px;
+                  min-width: 912px;
                   margin: auto;
                 `}
               >

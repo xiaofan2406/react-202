@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { css, cx } from 'react-emotion';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import * as scope from './scope';
-import { cssHoverableBox, cssCode, cssBorder } from '../styles';
-import Konsole from './Konsole';
+import { cssHoverableBox, cssCode, cssBorder } from '../../styles';
 
 const cssLive = css`
   margin-bottom: 24px;
@@ -47,20 +46,13 @@ const cssError = css`
   padding: 12px;
 `;
 
-function PreComponent({ code, flags }) {
-  const showEditable = flags.includes('editable');
-  const inlineNonEditable = !showEditable && flags.includes('inline');
-  const showKonsole = flags.includes('konsole');
-
+function CodeDisplay({ code, editable, inline, addon }) {
   return (
     <LiveProvider
       code={code}
       scope={scope}
       mountStylesheet={false}
-      className={cx(
-        showEditable ? cssLive : '',
-        inlineNonEditable ? cssInline : ''
-      )}
+      className={cx({ [cssLive]: editable, [cssInline]: inline })}
     >
       <div
         className={css`
@@ -69,24 +61,32 @@ function PreComponent({ code, flags }) {
         `}
       >
         <LiveEditor
-          contentEditable={showEditable}
-          className={showEditable ? cssEditor : cssNonEditable}
+          contentEditable={editable}
+          className={editable ? cssEditor : cssNonEditable}
         />
-        {showEditable ? (
+        {editable ? (
           <div className={cssPreviewSection}>
             <LivePreview />
-            {showKonsole ? <Konsole /> : null}
+            {addon}
           </div>
         ) : null}
       </div>
-      {showEditable ? <LiveError className={cssError} /> : null}
+      {editable ? <LiveError className={cssError} /> : null}
     </LiveProvider>
   );
 }
 
-PreComponent.propTypes = {
+CodeDisplay.propTypes = {
   code: PropTypes.string.isRequired,
-  flags: PropTypes.array.isRequired,
+  editable: PropTypes.bool,
+  inline: PropTypes.bool,
+  addon: PropTypes.node,
 };
 
-export default PreComponent;
+CodeDisplay.defaultProps = {
+  editable: false,
+  inline: false,
+  addon: null,
+};
+
+export default CodeDisplay;

@@ -5,6 +5,12 @@ import { css } from 'react-emotion';
 import { cssButton } from '../styles';
 import { orders } from '../utils';
 
+const cssNavButton = css`
+  ${cssButton};
+  position: fixed;
+  bottom: 24px;
+`;
+
 class Navigation extends React.Component {
   static propTypes = {
     location: PropTypes.object.isRequired,
@@ -42,11 +48,8 @@ class Navigation extends React.Component {
             onClick={this.handlePrev}
             type="button"
             className={css`
-              ${cssButton};
-              position: fixed;
-              bottom: 24px;
+              ${cssNavButton};
               left: 48px;
-              z-index: 0;
             `}
           >
             Previous
@@ -59,11 +62,8 @@ class Navigation extends React.Component {
             onClick={this.handleNext}
             type="button"
             className={css`
-              ${cssButton};
-              position: fixed;
-              bottom: 24px;
+              ${cssNavButton};
               right: 48px;
-              z-index: 0;
             `}
           >
             Next

@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import CodeDisplay from './CodeDisplay';
 
 function PreComponent({ children }) {
-  const flags = children.props.props
-    ? children.props.props.className.split(',')
-    : [];
-
-  return <CodeDisplay code={children.props.children} flags={flags} />;
+  const { children: code, ...rest } = children.props;
+  return <CodeDisplay code={code} {...rest} />;
 }
 
 PreComponent.propTypes = {

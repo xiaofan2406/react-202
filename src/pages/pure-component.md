@@ -1,13 +1,16 @@
 import Navigation from '../components/Navigation';
 import Spacer from '../components/Spacer';
 import Hidden from '../components/Hidden';
+import SmartCode from '../components/SmartCode';
 import DemoDialog, { PureComponent } from '../demos';
 
 # PureComponent
 
 #### React.PureComponent & Pure React.Component
 
-```jsx,inline
+<SmartCode inline still>
+
+```jsx
 class Child extends React.PureComponent {
   static propTypes = {
     text: PropTypes.string.isRequired,
@@ -25,7 +28,11 @@ class Child extends React.PureComponent {
 }
 ```
 
-```jsx,inline
+</SmartCode>
+
+<SmartCode inline still>
+
+```jsx
 class Child extends React.Component {
   static propTypes = {
     text: PropTypes.string.isRequired,
@@ -56,6 +63,8 @@ class Child extends React.Component {
   }
 }
 ```
+
+</SmartCode>
 
 <DemoDialog>
   <PureComponent />

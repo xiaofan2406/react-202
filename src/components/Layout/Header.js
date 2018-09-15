@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { css } from 'react-emotion';
-import { headerHeight, cssPageWidth, textColor, themeColor } from '../styles';
+import {
+  headerHeight,
+  cssPageWidth,
+  textColor,
+  themeColor,
+} from '../../styles';
 
 const cssExternalLink = css`
   text-decoration: none;
@@ -37,7 +42,7 @@ function Header() {
         `}
       >
         <Link to="/" style={{ textDecoration: 'none', color: themeColor }}>
-          f(props, state) -&#62; view
+          f(data) -&#62; view
         </Link>
       </span>
       <a

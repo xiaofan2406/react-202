@@ -1,4 +1,8 @@
-```jsx,editable,konsole
+import SmartCode from '../components/SmartCode';
+
+<SmartCode>
+
+```jsx
 class Demo extends React.Component {
   constructor(props) {
     super(props);
@@ -29,3 +33,5 @@ class Demo extends React.Component {
   }
 }
 ```
+
+</SmartCode>
