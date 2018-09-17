@@ -12,9 +12,15 @@ class Demo extends React.Component {
       text: '12345',
     };
 
+    this.handleClick = this.handleClick.bind(this);
     this.updateText = this.updateText.bind(this);
     this.validate = this.validate.bind(this);
     this.reset = this.reset.bind(this);
+  }
+
+  handleClick() {
+    this.updateText();
+    this.updateText();
   }
 
   updateText() {
@@ -36,7 +42,7 @@ class Demo extends React.Component {
     return (
       <>
         <div>{this.state.text}</div>
-        <button onClick={this.updateText}>Add</button>
+        <button onClick={this.handleClick}>Add</button>
         <button onClick={this.reset}>Reset</button>
       </>
     );

@@ -26,9 +26,9 @@ class Demo extends React.Component {
   }
 
   add() {
-    this.setState(prevState => ({
-      text: prevState.text + ' world',
-    }));
+    this.setState({
+      text: 'Hello',
+    });
   }
 
   render() {
@@ -36,7 +36,7 @@ class Demo extends React.Component {
     return (
       <>
         <div>{this.state.text}</div>
-        <button onClick={this.handleClick}>Add</button>
+        <button onClick={this.handleClick}>Click</button>
       </>
     );
   }

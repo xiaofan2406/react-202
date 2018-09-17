@@ -33,12 +33,12 @@ class Child extends React.Component {
 
 <Spacer />
 
-<DemoDialog title="Set State">
-  <SetState />
-</DemoDialog>
-
 <DemoDialog title="Batch setState">
   <BatchSetState />
+</DemoDialog>
+
+<DemoDialog title="Set State">
+  <SetState />
 </DemoDialog>
 
 <Hidden>

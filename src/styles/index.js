@@ -44,6 +44,10 @@ export const cssButton = css`
 
 // eslint-disable-next-line
 injectGlobal`
+  html {
+    overflow-y: scroll;
+  }
+
   body {
     color: ${textColor};
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,

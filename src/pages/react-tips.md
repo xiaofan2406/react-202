@@ -56,6 +56,16 @@ this.setState(prevState => {
 });
 ```
 
+<Spacer />
+
+```jsx
+this.setState(prevState => {
+  return null;
+});
+```
+
+<Spacer />
+
 <Hidden>
 
 - Avoid `_.remove`, `Array.splice` etc, the methods that mutates the original object/array.

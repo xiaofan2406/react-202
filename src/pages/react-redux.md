@@ -1,3 +1,4 @@
+import Navigation from '../components/Navigation';
 import Hidden from '../components/Hidden';
 
 # React with Redux
@@ -8,3 +9,5 @@ import Hidden from '../components/Hidden';
 - Same with react `state`, don't mutate, return new copy.
 
 </Hidden>
+
+<Navigation {...props} />
