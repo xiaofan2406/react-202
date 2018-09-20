@@ -5,7 +5,7 @@
  */
 
 import './src/assets/reset.css';
-import 'prismjs/themes/prism-solarizedlight.css';
+import 'prismjs/themes/prism-tomorrow.css';
 import ReduxProvider from './src/components/ReduxProvider';
 
 export const wrapRootElement = ReduxProvider;

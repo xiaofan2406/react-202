@@ -26,6 +26,7 @@ export const cssCode = css`
   font-family: monospace;
   font-size: 16px;
   line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
 `;
 
 export const cssButton = css`

@@ -15,21 +15,22 @@ const cssInline = css`
   margin-right: 12px;
 `;
 
-const cssEditor = css`
+const cssEditable = css`
   ${cssCode};
   outline: 0;
-  flex: 2;
-  margin: 0;
-  overflow: auto;
-  padding: 12px;
-  border-radius: 2px;
+  flex: 1;
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
 `;
 
-const cssNonEditable = css`
+const cssEditor = css`
   ${cssCode};
-  ${cssBorder};
   padding: 12px;
+  ${cssBorder};
   border-radius: 2px;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
 `;
 
 const cssPreviewSection = css`
@@ -62,7 +63,7 @@ function CodeDisplay({ code, editable, inline, addon }) {
       >
         <LiveEditor
           contentEditable={editable}
-          className={editable ? cssEditor : cssNonEditable}
+          className={cx(cssEditor, { [cssEditable]: editable })}
         />
         {editable ? (
           <div className={cssPreviewSection}>
