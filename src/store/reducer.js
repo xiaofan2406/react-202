@@ -1,22 +1,40 @@
 import { combineReducers } from 'redux';
 
-const konsole = (state = [], action) => {
+const defaultProducts = {
+  aaaa: {
+    id: 'aaaa',
+    name: 'Product AAAA',
+    cost: 400,
+  },
+  bbbb: {
+    id: 'bbbb',
+    name: 'Product BBBB',
+    cost: 200,
+  },
+};
+
+const products = (state = defaultProducts, action) => {
   switch (action.type) {
-    case 'konsole.log':
-      return [
+    case 'add':
+      return {
         ...state,
-        {
-          message: action.message,
-          timestamp: +new Date(),
-        },
-      ];
-    case 'konsole.clear':
-      return [];
+        [action.product.id]: action.product,
+      };
+    case 'remove':
+      return Object.keys(state)
+        .filter(id => id !== action.id)
+        .reduce(
+          (reduced, next) => ({
+            ...reduced,
+            [next]: state[next],
+          }),
+          {}
+        );
     default:
       return state;
   }
 };
 
 export default combineReducers({
-  konsole,
+  products,
 });

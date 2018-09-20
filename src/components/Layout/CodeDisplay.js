@@ -47,12 +47,13 @@ const cssError = css`
   padding: 12px;
 `;
 
-function CodeDisplay({ code, editable, inline, addon }) {
+function CodeDisplay({ code, editable, inline, addon, noInline }) {
   return (
     <LiveProvider
       code={code}
       scope={scope}
       mountStylesheet={false}
+      noInline={noInline}
       className={cx({ [cssLive]: editable, [cssInline]: inline })}
     >
       <div
@@ -81,12 +82,14 @@ CodeDisplay.propTypes = {
   code: PropTypes.string.isRequired,
   editable: PropTypes.bool,
   inline: PropTypes.bool,
+  noInline: PropTypes.bool,
   addon: PropTypes.node,
 };
 
 CodeDisplay.defaultProps = {
   editable: false,
   inline: false,
+  noInline: false,
   addon: null,
 };
 

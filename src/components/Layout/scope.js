@@ -1,7 +1,9 @@
 /* eslint-disable react/no-multi-comp */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { konsole } from '../../store';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
+import { dispatch } from '../../store';
 
 export class NormalChild extends React.Component {
   static propTypes = {
@@ -35,4 +37,17 @@ export class PureChild extends React.PureComponent {
   }
 }
 
-export { konsole };
+export const Product = ({ product }) => {
+  window.konsole.log('[Product]: render');
+  return (
+    <div>
+      {product.name} costs {product.cost}
+    </div>
+  );
+};
+
+Product.propTypes = {
+  product: PropTypes.object.isRequired,
+};
+
+export { dispatch, connect, createSelector };

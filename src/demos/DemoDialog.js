@@ -44,9 +44,9 @@ class DemoDialog extends React.Component {
                 z-index: 20;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(255, 255, 255, 0.975);
+                background-color: #ffffff;
                 overflow: auto;
-                padding: 96px;
+                padding: 96px 24px;
               `}
             >
               {children}

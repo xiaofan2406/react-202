@@ -6,6 +6,6 @@
 
 import './src/assets/reset.css';
 import 'prismjs/themes/prism-tomorrow.css';
-import ReduxProvider from './src/components/ReduxProvider';
+import RootProvider from './src/components/RootProvider';
 
-export const wrapRootElement = ReduxProvider;
+export const wrapRootElement = RootProvider;

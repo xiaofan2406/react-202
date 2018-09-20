@@ -16,12 +16,4 @@ const store = createStore(
 
 export const { dispatch } = store;
 
-export const konsole = {
-  log: message =>
-    dispatch({
-      type: 'konsole.log',
-      message,
-    }),
-};
-
 export default store;
