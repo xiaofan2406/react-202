@@ -2,7 +2,15 @@ import Navigation from '../components/Navigation';
 import Spacer from '../components/Spacer';
 import Hidden from '../components/Hidden';
 
-# Tips
+# How to setState
+
+#### If the new state is based on previous state, always use the function for describing state change.
+
+```jsx
+this.setState(prevState => nextState);
+```
+
+<Spacer />
 
 #### Use cooler syntax
 

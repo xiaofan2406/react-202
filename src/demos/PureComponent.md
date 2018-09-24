@@ -6,11 +6,7 @@ import SmartCode from '../components/SmartCode';
 class Demo extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      text: 'Hello',
-    };
-
+    this.state = { text: 'Hello' };
     this.changeText = this.changeText.bind(this);
   }
 

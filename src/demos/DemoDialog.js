@@ -46,7 +46,7 @@ class DemoDialog extends React.Component {
                 height: 100%;
                 background-color: #ffffff;
                 overflow: auto;
-                padding: 96px 24px;
+                padding: 48px 24px;
               `}
             >
               {children}
@@ -54,13 +54,14 @@ class DemoDialog extends React.Component {
                 type="button"
                 className={css`
                   ${cssButton};
+                  border: none;
                   position: absolute;
-                  top: 24px;
+                  top: 0px;
                   right: 24px;
                 `}
                 onClick={this.closeDialog}
               >
-                Close
+                x
               </button>
             </div>
           </Portal>

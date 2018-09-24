@@ -41,7 +41,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'react-202',
-        short_name: 'starter',
+        short_name: 'react-202',
         start_url: '/',
         background_color: '#663399',
         theme_color: '#663399',

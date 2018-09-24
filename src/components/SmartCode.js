@@ -7,8 +7,8 @@ function SmartCode({ children, still, inline, konsole, noInline, stateTree }) {
   const child = React.Children.only(children);
   const addon = (
     <>
-      {konsole ? <Konsole /> : null}
       {stateTree ? <StateTree /> : null}
+      {konsole ? <Konsole /> : null}
     </>
   );
 

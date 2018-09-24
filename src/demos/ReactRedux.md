@@ -4,10 +4,10 @@ import Hidden from '../components/Hidden';
 <SmartCode konsole noInline stateTree>
 
 ```jsx
-const getProduct = state => state.products.aaaa;
+const getProduct = (state, id) => state.products[id];
 
-const mapState = state => ({
-  product: getProduct(state),
+const mapState = (state, props) => ({
+  product: getProduct(state, props.id),
 });
 
 const ConnectedProduct = connect(mapState)(Product);
@@ -41,7 +41,7 @@ class Demo extends React.Component {
         <button onClick={this.handleClick}>Click</button>
         <button onClick={this.addCCCC}>Add CCCC</button>
         <button onClick={this.removeCCC}>Remove CCCC</button>
-        <ConnectedProduct />
+        <ConnectedProduct id="aaaa" />
       </div>
     );
   }
@@ -55,20 +55,43 @@ render(<Demo />);
 <Hidden>
 
 ```js
-const getProduct = state => ({
-  ...state.products.aaaa,
-  isExpensive: state.products.aaaa.cost > 200,
+const getProduct = (state, id) => ({
+  ...state.products[id],
+  isExpensive: state.products[id].cost > 200,
 });
 ```
 
 ```js
 const getProduct = createSelector(
-  state => state.products.aaaa,
+  (state, id) => state.products[id],
   product => ({
-    ...state.products.aaaa,
-    isExpensive: state.products.aaaa.cost > 200,
+    ...product,
+    isExpensive: product.cost > 200,
   })
 );
 ```
+
+```js
+const makeGetProduct = id =>
+  createSelector(
+    state => state.products[id],
+    product => ({
+      ...product,
+      isExpensive: product.cost > 200,
+    })
+  );
+
+const mapState = (__, { id }) => {
+  const getProduct = makeGetProduct(id);
+  return (state, props) => ({
+    product: getProduct(state, props.id),
+  });
+};
+```
+
+- by default `connect` makes the wrapped component `pure`.
+- if the selector always returns a new reference, its gonna re-render on every state change from redux store. technically not `every`, but very inefficient
+- Use `reselect`, or any memoize solution.
+- function return a `mapState` for shared selector.
 
 </Hidden>

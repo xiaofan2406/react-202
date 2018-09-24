@@ -6,20 +6,25 @@ import DemoDialog, { ReactRedux } from '../demos';
 # React with Redux
 
 ```jsx
-const Product = ({ product }) => {
+const Product = ({ product, id }) => {
   konsole.log('[Product]: render');
   return (
     <div>
+      <span>{id}: </span>
       {product.name} costs {product.cost}
+      {product.isExpensive ? <div>Expensive!</div> : null}
     </div>
   );
 };
 
 Product.propTypes = {
   product: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
-const mapState = state => ({ product: state.products.aaaa });
+const mapState = (state, props) => ({
+  product: state.products[props.id],
+});
 
 export default connect(mapState)(Product);
 ```
@@ -34,11 +39,7 @@ export default connect(mapState)(Product);
 
 - official redux docs.
 - Same with react `state`, don't mutate, return new copy.
-- by default `connect` makes the wrapped component `pure`.
-
 - selector functions is a good abstraction help organize redux code.
-- it might troll you.
-- `reselect` to the rescue.
 
 </Hidden>
 

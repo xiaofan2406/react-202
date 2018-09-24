@@ -7,7 +7,11 @@ import Hidden from '../components/Hidden';
 #### Functional Component
 
 ```jsx
-const Child = () => <span>child</span>;
+const Child = ({ text }) => <span>{text}</span>;
+
+Child.propTypes = {
+  text: PropTypes.string.isRequired,
+};
 ```
 
 <Spacer />
@@ -16,6 +20,10 @@ const Child = () => <span>child</span>;
 
 ```jsx
 class Child extends React.Component {
+  static propTypes = {
+    text: PropTypes.string.isRequired,
+  };
+
   render() {
     return <span>child</span>;
   }

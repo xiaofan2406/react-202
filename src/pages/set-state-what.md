@@ -4,9 +4,7 @@ import Hidden from '../components/Hidden';
 import SmartCode from '../components/SmartCode';
 import DemoDialog, { SetState, BatchSetState } from '../demos';
 
-# this.setState
-
-#### State
+# What is setState
 
 ```jsx
 class Child extends React.Component {
@@ -33,18 +31,18 @@ class Child extends React.Component {
 
 <Spacer />
 
-<DemoDialog title="Batch setState">
-  <BatchSetState />
-</DemoDialog>
-
 <DemoDialog title="Set State">
   <SetState />
+</DemoDialog>
+
+<DemoDialog title="Batch setState">
+  <BatchSetState />
 </DemoDialog>
 
 <Hidden>
 
 - `state` is another form of data, usually changeable via user interaction.
-- `state` change does not trigger re-render, calling `setState` will.
+- calling `setState` trigger re-render so that the view is always synced with data.
 - `setState` is asynchronous, but does not return promise.
 - there are a lot of traps
 

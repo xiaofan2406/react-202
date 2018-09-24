@@ -1,4 +1,5 @@
 import SmartCode from '../components/SmartCode';
+import Hidden from '../components/Hidden';
 
 <SmartCode konsole>
 
@@ -6,37 +7,47 @@ import SmartCode from '../components/SmartCode';
 class Demo extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { text: '123' };
 
-    this.state = {
-      text: 'Hello',
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-    this.add = this.add.bind(this);
+    this.addOnce = this.addOnce.bind(this);
+    this.addTwice = this.addTwice.bind(this);
+    this.validate = this.validate.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
-  componentDidMount() {
-    this.add();
-    this.add();
-  }
-
-  handleClick() {
-    this.add();
-    this.add();
-  }
-
-  add() {
+  addOnce() {
     this.setState({
-      text: 'Hello',
+      text: this.state.text + (this.state.text.length + 1),
+    });
+    this.validate();
+  }
+
+  validate() {
+    if (this.state.text.length > 7) konsole.log('broken');
+  }
+
+  addTwice() {
+    this.setState({
+      text: this.state.text + (this.state.text.length + 1),
+    });
+    this.setState({
+      text: this.state.text + (this.state.text.length + 1),
     });
   }
 
+  reset() {
+    this.setState({ text: '123' });
+  }
+
   render() {
-    konsole.log('render');
     return (
       <>
-        <div>{this.state.text}</div>
-        <button onClick={this.handleClick}>Click</button>
+        <div>
+          <h2>{this.state.text}</h2>
+        </div>
+        <button onClick={this.addOnce}>Add</button>
+        <button onClick={this.addTwice}>Add twice</button>
+        <button onClick={this.reset}>Reset</button>
       </>
     );
   }
@@ -44,3 +55,28 @@ class Demo extends React.Component {
 ```
 
 </SmartCode>
+
+<Hidden>
+
+- fix `addOnce` by moving validate to callback
+- fix `addTwice` by using function setState
+- Note callback is also queued at the end when the setState queue is flushed.
+
+```js
+  addOnce() {
+    this.setState({
+      text: this.state.text + (this.state.text.length + 1),
+    }, this.validate);
+  }
+
+  addTwice() {
+    this.setState((prevState) => ({
+      text: prevState.text + (prevState.text.length + 1),
+    }));
+    this.setState((prevState) => ({
+      text: prevState.text + (prevState.text.length + 1),
+    }));
+  }
+```
+
+</Hidden>

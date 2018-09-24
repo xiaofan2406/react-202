@@ -29,7 +29,8 @@ function Konsole() {
             onClick={window.konsole.clear}
             className={css`
               position: absolute;
-              bottom: 0;
+              top: 0;
+              right: 0;
               ${cssButton};
               padding: 6px;
               font-size: 12px;

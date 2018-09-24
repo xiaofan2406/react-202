@@ -1,8 +1,8 @@
 export const orders = [
   '/component-types',
-  '/set-state',
   '/pure-component',
-  '/react-tips',
+  '/set-state-what',
+  '/set-state-how',
   '/react-redux',
   '/end',
 ];

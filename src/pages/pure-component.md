@@ -76,6 +76,7 @@ class Child extends React.Component {
 - The shouldComponentUpdate is what PureComponent represents.
 - Shallow compare every property of the props and state
 - note the !==
+- when all props and state are primitive values. use `PureComponent`
 
 </Hidden>
 

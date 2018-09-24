@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 function StateTree({ state }) {
-  return <pre>{JSON.stringify(state, ' ', 2)}</pre>;
+  return (
+    <>
+      <h3>State Tree:</h3>
+      <pre>{JSON.stringify(state, ' ', 2)}</pre>
+    </>
+  );
 }
 
 StateTree.propTypes = {

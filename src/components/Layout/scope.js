@@ -37,17 +37,20 @@ export class PureChild extends React.PureComponent {
   }
 }
 
-export const Product = ({ product }) => {
+export const Product = ({ product, id }) => {
   window.konsole.log('[Product]: render');
   return (
     <div>
+      <span>{id}: </span>
       {product.name} costs {product.cost}
+      {product.isExpensive ? <div>Expensive!</div> : null}
     </div>
   );
 };
 
 Product.propTypes = {
   product: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export { dispatch, connect, createSelector };
