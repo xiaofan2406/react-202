@@ -1,8 +1,3 @@
-const emotionConfig =
-  process.env.NODE_ENV === 'production'
-    ? { hoist: true }
-    : { sourceMap: true, autoLabel: true };
-
 module.exports = {
   siteMetadata: {
     title: 'React 202',
@@ -10,35 +5,16 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-mdx`,
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        extensions: ['.mdx', '.md'],
         defaultLayouts: {
-          home: require.resolve('./src/components/HomeLayout'),
-          pages: require.resolve('./src/components/Layout'),
+          default: require.resolve('./src/components/Layout.js'),
         },
       },
     },
+    'gatsby-plugin-emotion',
     {
-      resolve: `gatsby-plugin-emotion`,
-      options: emotionConfig,
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: 'home',
-        path: `${__dirname}/src/pages/index.md`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: 'pages',
-        path: `${__dirname}/src/pages`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'react-202',
         short_name: 'react-202',
