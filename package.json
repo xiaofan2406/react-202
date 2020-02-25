@@ -42,8 +42,10 @@
     ]
   },
   "prettier": {
+    "printWidth": 80,
     "singleQuote": true,
-    "trailingComma": "es5"
+    "trailingComma": "es5",
+    "bracketSpacing": false
   },
   "dependencies": {
     "@emotion/core": "^10.0.27",

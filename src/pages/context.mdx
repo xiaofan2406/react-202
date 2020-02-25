@@ -1,0 +1,142 @@
+import treeSrc from '../assets/tree.png';
+import Editor from '../components/Editor';
+
+# Context API
+
+<img src={treeSrc} style={{width: 300}} />
+
+## Usage Example
+
+<Editor>
+
+```jsx
+() => {
+  const {Provider, Consumer} = React.createContext();
+
+  class CurrencyProvider extends React.Component {
+    constructor(props) {
+      super(props);
+
+      this.setCurrency = currency => {
+        this.setState({currecny});
+      };
+
+      this.state = {
+        currency: this.props.defaultCurrency,
+        setCurrency: this.setCurrency,
+      };
+    }
+
+    render() {
+      return <Provider value={this.state}>{this.props.children}</Provider>;
+    }
+  }
+
+  const CurrencyConsumer = Consumer;
+
+  const App = () => {
+    const user = {
+      currency: 'AUD',
+    };
+
+    return (
+      <CurrencyProvider defaultCurrency={user.currency}>
+        <Child />
+        <Tree>
+          <OtherChild />
+        </Tree>
+      </CurrencyProvider>
+    );
+  };
+
+  const Child = () => {
+    return (
+      <CurrencyConsumer>
+        {({currency}) => <div>child content</div>}
+      </CurrencyConsumer>
+    );
+  };
+
+  const OtherChild = () => {
+    return (
+      <CurrencyConsumer>
+        {({currency}) => <div>other child content</div>}
+      </CurrencyConsumer>
+    );
+  };
+};
+```
+
+</Editor>
+
+## Pitfall 1
+
+```jsx
+class CurrencyProvider extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.setCurrency = currency => {
+      this.setState({currecny});
+    };
+
+    this.state = {
+      currency: this.props.defaultCurrency,
+    };
+  }
+
+  render() {
+    return (
+      <Provider
+        value={{currency: this.state.currency, setCurrency: this.setCurrency}}
+      >
+        {this.props.children}
+      </Provider>
+    );
+  }
+}
+```
+
+## Pitfall 2
+
+```jsx
+class CurrencyProvider extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.setCurrency = currency => {
+      this.setState({currecny});
+    };
+
+    this.toggleTheme = () => {
+      this.setState(prevState => ({
+        isDark: !prevState.isDark,
+      }));
+    };
+
+    this.state = {
+      currency: this.props.defaultCurrency,
+      setCurrency: this.setCurrency,
+
+      isDark: false,
+      toggleTheme: this.toggleTheme,
+    };
+  }
+
+  render() {
+    return <Provider value={this.state}>{this.props.children}</Provider>;
+  }
+}
+```
+
+<Notes>
+
+- Context is for teleporting state from one sub-tree to another.
+- Usage Example
+- Note the `value` props on `Provider`
+- Pitfall 1
+- Context should be separated based on its data dependencies.
+- Pitfall 2
+- Grid heavily uses context as by default the Toolbars and the rows are separate trees.
+
+</Notes>

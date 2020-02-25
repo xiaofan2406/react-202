@@ -1,0 +1,110 @@
+# Share logic between components
+
+## Higher order components
+
+```jsx
+const withSomeData = Component => {
+  class EnhancedComponent extends React.Component {
+    componentDidMount() {
+      // fetch data and set to state
+    }
+
+    componentDidUpdate() {
+      // fetch data and set to state
+    }
+
+    render() {
+      return <Component {...this.props} someData={this.state.data} />;
+    }
+  }
+
+  return EnhancedComponent;
+};
+
+class MyComponent extends React.Component {
+  render() {
+    return <div>{JSON.stringify(this.props.someData)}</div>;
+  }
+}
+
+export default withSomeData(MyComponent);
+```
+
+```jsx
+export default withSomeData(withSomeBehavior(withSomeState(MyComponent)));
+```
+
+<Notes>
+
+- a functions take in a Component and return a new component
+- `connect` is a hoc, it takes in some additional params
+
+cons when composed multiple hocs
+
+- injection happens statically, resulting potential name collision
+- difficult to see what exactly will your component do
+
+</Notes>
+
+## Render prop pattern
+
+```jsx
+class WithSomeData extends React.Component {
+  componentDidMount() {
+    // fetch data and set to state
+  }
+
+  componentDidUpdate() {
+    // fetch data and set to state
+  }
+
+  render() {
+    return this.props.children({someData: this.state.data});
+  }
+}
+
+class MyComponent extends React.Component {
+  render() {
+    return (
+      <WithSomeData>
+        {({someData}) => <div>{JSON.stringify(someData)}</div>}
+      </WithSomeData>
+    );
+  }
+}
+
+export default MyComponent;
+```
+
+```jsx
+class MyComponent extends React.Component {
+  render() {
+    return (
+      <WithSomeData>
+        {({someData}) => (
+          <WithSomeBehavior>
+            {() => (
+              <WithSomeSate>
+                {() => <div>{JSON.stringify(someData)}</div>}
+              </WithSomeSate>
+            )}
+          </WithSomeBehavior>
+        )}
+      </WithSomeData>
+    );
+  }
+}
+```
+
+<Notes>
+
+- solves some problems that hoc had
+
+cons when composed multiple render prop
+
+- component tree can get really ugly
+- difficult to see whats actually rendered on the dom
+
+- hooks solves them all
+
+</Notes>
